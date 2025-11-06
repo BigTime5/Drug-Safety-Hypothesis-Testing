@@ -1,0 +1,17 @@
+{
+  "test_results": [
+    {
+      "test_name": "Two-Sample Proportion Test",
+      "research_question": "Do proportions of adverse effects differ between groups?",
+      "test_statistic": "Z = 0.0452",
+      "p_value": 0.9639333330262475,
+      "significance_level": 0.05,
+      "is_significant": false,
+      "effect_size_name": "Cohen's h",
+      "effect_size_value": 0.0008,
+      "interpretation": "No significant difference in adverse effect proportions between groups"
+    },
+    {
+      "test_name": "Chi-Square Test of Independence",
+      "research_question": "Is number of adverse effects independent of treatment?",
+      "test_statistic": 

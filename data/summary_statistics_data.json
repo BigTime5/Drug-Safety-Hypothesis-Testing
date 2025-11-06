@@ -1,0 +1,36 @@
+{
+  "demographic_summary": {
+    "drug_group": {
+      "total_participants": 10727,
+      "age_mean": 64.19026754917498,
+      "age_std": 8.727153994854762,
+      "male_count": 8135,
+      "female_count": 2592,
+      "male_percentage": 75.83667381374103,
+      "female_percentage": 24.163326186258974
+    },
+    "placebo_group": {
+      "total_participants": 5376,
+      "age_mean": 63.97247023809524,
+      "age_std": 8.893038046254933,
+      "male_count": 4193,
+      "female_count": 1183,
+      "male_percentage": 77.99479166666666,
+      "female_percentage": 22.005208333333336
+    }
+  },
+  "adverse_effects_summary": {
+    "drug_group": {
+      "adverse_effects_count": 1024,
+      "adverse_effects_percentage": 9.546005406917125,
+      "no_adverse_effects_count": 9703,
+      "no_adverse_effects_percentage": 90.45399459308288
+    },
+    "placebo_group": {
+      "adverse_effects_count": 512,
+      "adverse_effects_percentage": 9.523809523809524,
+      "no_adverse_effects_count": 4864,
+      "no_adverse_effects_percentage": 90.47619047619048
+    }
+  }
+}

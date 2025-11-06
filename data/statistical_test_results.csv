@@ -1,0 +1,4 @@
+Test,Research Question,Test Statistic,P-Value,Significance (α=0.05),Effect Size
+Two-Sample Proportion Test,Do proportions of adverse effects differ between groups?,Z = 0.0452,0.963933,Not Significant,Cohen's h = 0.0008 (negligible)
+Chi-Square Test of Independence,Is number of adverse effects independent of treatment?,χ² = 1.7996,0.615012,Not Significant,Cramér's V = 0.0106 (negligible)
+Age Group Comparison (Mann-Whitney U),Is there age difference between treatment groups?,U = 29149339.5,0.256963,Not Significant,Rank-biserial r = -0.0109 (negligible)
