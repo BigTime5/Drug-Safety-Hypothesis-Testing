@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drug Safety Analysis Report - GlobalXYZ Pharmaceutical Clinical Trial</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+        }
+        .chart-container {
+            height: 400px;
+            margin: 20px 0;
+        }
+        .stat-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .significant {
+            background-color: #10b981;
+        }
+        .not-significant {
+            background-color: #ef4444;
+        }
+        @media print {
+            body {
+                margin: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+<div class="max-w-6xl mx-auto bg-white shadow-2xl">
+    <!-- Header -->
+    <div class="stat-highlight text-white p-8">
+        <div class="text-center">
+            <h1 class="text-4xl font-bold mb-2">Drug Safety Statistical Analysis Report</h1>
+            <h2 class="text-2xl font-semibold mb-4">GlobalXYZ Pharmaceutical Clinical Trial</h2>
+            <div class="flex justify-center items-center space-x-4 text-lg">
+                <span><i class="fas fa-calendar-alt mr-2"></i>November 6, 2025</span>
+                <span><i class="fas fa-file-alt mr-2"></i>Version 1.0</span>
+                <span><i class="fas fa-check-circle mr-2"></i>Final Report</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="p-8">
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8">
+            <h2 class="text-2xl font-bold text-blue-900 mb-4"><i class="fas fa-clipboard-list mr-3"></i>Executive Summary</h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+                This report presents a comprehensive statistical analysis of a randomized controlled drug trial conducted by GlobalXYZ Pharmaceutical. 
+                The analysis was performed by a non-profit organization focused on drug safety to evaluate the adverse reactions and their significance.
+                Key findings indicate statistically significant differences in adverse effect rates between treatment groups.
+            </p>
+        </div>
+
+        <!-- Key Results Dashboard -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-gradient-to-br from-green-400 to-green-600 text-white p-6 rounded-lg">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-green-100 text-sm">Proportion Test</p>
+                        <p class="text-2xl font-bold">p = 0.0043</p>
+                        <p class="text-green-100 text-sm">Statistically Significant</p>
+                    </div>
+                    <i class="fas fa-chart-bar text-3xl text-green-200"></i>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-blue-400 to-blue-600 text-white p-6 rounded-lg">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-blue-100 text-sm">Chi-Square Test</p>
+                        <p class="text-2xl font-bold">p = 0.0121</p>
+                        <p class="text-blue-100 text-sm">Statistically Significant</p>
+                    </div>
+                    <i class="fas fa-chart-pie text-3xl text-blue-200"></i>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-br from-gray-400 to-gray-600 text-white p-6 rounded-lg">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-100 text-sm">Age Comparison</p>
+                        <p class="text-2xl font-bold">p = 0.604</p>
+                        <p class="text-gray-100 text-sm">Not Significant</p>
+                    </div>
+                    <i class="fas fa-users text-3xl text-gray-200"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-info-circle mr-3 text-blue-600"></i>Introduction
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-gray-700 mb-4">
+                        GlobalXYZ pharmaceutical company has completed a randomized controlled drug trial and provided the dataset to our non-profit organization for independent safety analysis. This report examines the drug's adverse reaction profile to determine if adverse reactions are of significant proportions.
+                    </p>
+                    <p class="text-gray-700">
+                        The study follows a 2:1 randomization ratio (Drug:Placebo) and includes comprehensive demographic data, vital signs, and adverse effect monitoring over multiple time points.
+                    </p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg">
+                    <h4 class="font-semibold mb-2 text-gray-800">Research Questions</h4>
+                    <ol class="list-decimal pl-6 space-y-1 text-sm text-gray-700">
+                        <li>Do adverse effect proportions differ significantly between Drug and Placebo?</li>
+                        <li>Is the number of adverse effects independent of treatment group?</li>
+                        <li>Are there age differences between treatment groups?</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Overview -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-microscope mr-3 text-blue-600"></i>1. Study Overview
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg mb-4 text-gray-800">Study Design</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><strong>Type:</strong> Randomized Controlled Trial (RCT)</li>
+                        <li><strong>Treatment Ratio:</strong> 2:1 (Drug to Placebo)</li>
+                        <li><strong>Data Source:</strong> Vanderbilt University Department of Biostatistics</li>
+                        <li><strong>Primary Objective:</strong> Evaluate adverse effects between groups</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="font-semibold text-lg mb-4 text-gray-800">Dataset Variables</h3>
+                    <div class="text-sm text-gray-700 space-y-1">
+                        <div><strong>age:</strong> Age of the individual</div>
+                        <div><strong>sex:</strong> Gender (male/female)</div>
+                        <div><strong>trx:</strong> Treatment group (Drug/Placebo)</div>
+                        <div><strong>week:</strong> Week of testing (0, 1, 2, 4, 8, 12, 16, 20)</div>
+                        <div><strong>wbc:</strong> White blood cell count</div>
+                        <div><strong>rbc:</strong> Red blood cell count</div>
+                        <div><strong>adverse_effects:</strong> Presence of adverse effects (Yes/No)</div>
+                        <div><strong>num_effects:</strong> Number of adverse effects experienced</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Questions -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-question-circle mr-3 text-green-600"></i>2. Research Questions
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-green-50 border-l-4 border-green-500 p-6">
+                    <h3 class="font-bold text-green-800 mb-2">Question 1: Proportion Comparison</h3>
+                    <p class="text-gray-700 mb-2">Do the proportions of adverse effects differ significantly between Drug and Placebo groups?</p>
+                    <div class="text-sm text-gray-600">
+                        <strong>Test:</strong> Two-sample proportion z-test | <strong>Variable:</strong> <code class="bg-gray-200 px-1">two_sample_p_value</code>
+                    </div>
+                </div>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6">
+                    <h3 class="font-bold text-blue-800 mb-2">Question 2: Independence Test</h3>
+                    <p class="text-gray-700 mb-2">Is the number of adverse effects independent of treatment group?</p>
+                    <div class="text-sm text-gray-600">
+                        <strong>Test:</strong> Chi-square test of independence | <strong>Variable:</strong> <code class="bg-gray-200 px-1">num_effects_p_value</code>
+                    </div>
+                </div>
+                
+                <div class="bg-purple-50 border-l-4 border-purple-500 p-6">
+                    <h3 class="font-bold text-purple-800 mb-2">Question 3: Age Comparison</h3>
+                    <p class="text-gray-700 mb-2">Is there a significant difference in ages between Drug and Placebo groups?</p>
+                    <div class="text-sm text-gray-600">
+                        <strong>Test:</strong> Independent samples t-test | <strong>Variable:</strong> <code class="bg-gray-200 px-1">age_group_effects_p_value</code>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded">
+                <p class="text-yellow-800"><strong>Significance Level:</strong> α = 0.05</p>
+            </div>
+        </section>
+
+        <!-- Data Overview -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-database mr-3 text-indigo-600"></i>3. Data Overview
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-indigo-50 p-6 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-indigo-600 mb-2">6,736</div>
+                    <div class="text-gray-700">Total Observations</div>
+                </div>
+                <div class="bg-green-50 p-6 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-green-600 mb-2">4,490</div>
+                    <div class="text-gray-700">Drug Group (66.7%)</div>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-lg text-center">
+                    <div class="text-3xl font-bold text-blue-600 mb-2">2,246</div>
+                    <div class="text-gray-700">Placebo Group (33.3%)</div>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="font-semibold text-lg mb-4">Study Timeline & Data Quality</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <strong>Duration:</strong> 20 weeks<br>
+                        <strong>Measurement Points:</strong> Weeks 0, 1, 2, 4, 8, 12, 16, 20<br>
+                        <strong>Ratio Achievement:</strong> 2:1 (Drug to Placebo) as designed
+                    </div>
+                    <div>
+                        <strong>Missing Values:</strong> Present in WBC and RBC measurements<br>
+                        <strong>Complete Data:</strong> Age, sex, treatment, adverse effects<br>
+                        <strong>Data Quality:</strong> High for primary endpoints
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Descriptive Statistics -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-chart-line mr-3 text-purple-600"></i>4. Descriptive Statistics
+            </h2>
+            
+            <!-- Age Statistics Table -->
+            <div class="mb-6">
+                <h3 class="font-semibold text-lg mb-4">4.1 Demographic Characteristics by Treatment Group</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-white border border-gray-300 rounded-lg">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-4 py-2 text-left font-semibold border-b">Group</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">N</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Mean Age</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Std Dev</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Min</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Q1</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Median</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Q3</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Max</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-green-50">
+                                <td class="px-4 py-2 font-medium">Drug</td>
+                                <td class="px-4 py-2 text-center">4,490</td>
+                                <td class="px-4 py-2 text-center">64.5</td>
+                                <td class="px-4 py-2 text-center">9.8</td>
+                                <td class="px-4 py-2 text-center">25</td>
+                                <td class="px-4 py-2 text-center">58</td>
+                                <td class="px-4 py-2 text-center">65</td>
+                                <td class="px-4 py-2 text-center">72</td>
+                                <td class="px-4 py-2 text-center">89</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="px-4 py-2 font-medium">Placebo</td>
+                                <td class="px-4 py-2 text-center">2,246</td>
+                                <td class="px-4 py-2 text-center">64.3</td>
+                                <td class="px-4 py-2 text-center">9.9</td>
+                                <td class="px-4 py-2 text-center">24</td>
+                                <td class="px-4 py-2 text-center">57</td>
+                                <td class="px-4 py-2 text-center">65</td>
+                                <td class="px-4 py-2 text-center">72</td>
+                                <td class="px-4 py-2 text-center">88</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Gender Distribution -->
+            <div class="mb-6">
+                <h4 class="font-medium text-md mb-3">Gender Distribution</h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-white border border-gray-300 rounded-lg">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-4 py-2 text-left font-semibold border-b">Group</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Male</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Female</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">% Male</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">% Female</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-green-50">
+                                <td class="px-4 py-2 font-medium">Drug</td>
+                                <td class="px-4 py-2 text-center">2,450</td>
+                                <td class="px-4 py-2 text-center">2,040</td>
+                                <td class="px-4 py-2 text-center">54.6%</td>
+                                <td class="px-4 py-2 text-center">45.4%</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="px-4 py-2 font-medium">Placebo</td>
+                                <td class="px-4 py-2 text-center">1,225</td>
+                                <td class="px-4 py-2 text-center">1,021</td>
+                                <td class="px-4 py-2 text-center">54.5%</td>
+                                <td class="px-4 py-2 text-center">45.5%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Adverse Effects Summary -->
+            <div class="mb-6">
+                <h3 class="font-semibold text-lg mb-4">4.2 Adverse Effects Summary</h3>
+                
+                <div class="mb-4">
+                    <h4 class="font-medium text-md mb-3">Overall Adverse Effects Rate</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-4 py-2 text-left font-semibold border-b">Group</th>
+                                    <th class="px-4 py-2 text-center font-semibold border-b">Total Records</th>
+                                    <th class="px-4 py-2 text-center font-semibold border-b">Adverse Effects (Yes)</th>
+                                    <th class="px-4 py-2 text-center font-semibold border-b">Adverse Effects (No)</th>
+                                    <th class="px-4 py-2 text-center font-semibold border-b">Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-red-50">
+                                    <td class="px-4 py-2 font-medium">Drug</td>
+                                    <td class="px-4 py-2 text-center">4,490</td>
+                                    <td class="px-4 py-2 text-center font-semibold text-red-600">1,568</td>
+                                    <td class="px-4 py-2 text-center">2,922</td>
+                                    <td class="px-4 py-2 text-center font-bold text-red-600">34.9%</td>
+                                </tr>
+                                <tr class="bg-green-50">
+                                    <td class="px-4 py-2 font-medium">Placebo</td>
+                                    <td class="px-4 py-2 text-center">2,246</td>
+                                    <td class="px-4 py-2 text-center font-semibold text-green-600">703</td>
+                                    <td class="px-4 py-2 text-center">1,543</td>
+                                    <td class="px-4 py-2 text-center font-bold text-green-600">31.3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="font-medium text-md mb-3">Number of Adverse Effects Distribution</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full bg-white border border-gray-300 rounded-lg">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-4 py-2 text-left font-semibold border-b">Num Effects</th>
+                                    <th class="px-4 py-2 text-center font-semibold border-b">Drug (n)</th>
+                                    <th class="px-4 py-2 text-center font-semibold border-b">Drug (%)</th>
+                                    <th class="px-4 py-2 text-center font-semibold border-b">Placebo (n)</th>
+                                    <th class="px-4 py-2 text-center font-semibold border-b">Placebo (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="px-4 py-2 font-medium">0</td>
+                                    <td class="px-4 py-2 text-center">2,922</td>
+                                    <td class="px-4 py-2 text-center">65.1%</td>
+                                    <td class="px-4 py-2 text-center">1,543</td>
+                                    <td class="px-4 py-2 text-center">68.7%</td>
+                                </tr>
+                                <tr class="bg-yellow-50">
+                                    <td class="px-4 py-2 font-medium">1</td>
+                                    <td class="px-4 py-2 text-center">1,120</td>
+                                    <td class="px-4 py-2 text-center">25.0%</td>
+                                    <td class="px-4 py-2 text-center">534</td>
+                                    <td class="px-4 py-2 text-center">23.8%</td>
+                                </tr>
+                                <tr class="bg-orange-50">
+                                    <td class="px-4 py-2 font-medium">2</td>
+                                    <td class="px-4 py-2 text-center">336</td>
+                                    <td class="px-4 py-2 text-center">7.5%</td>
+                                    <td class="px-4 py-2 text-center">134</td>
+                                    <td class="px-4 py-2 text-center">6.0%</td>
+                                </tr>
+                                <tr class="bg-red-50">
+                                    <td class="px-4 py-2 font-medium">3</td>
+                                    <td class="px-4 py-2 text-center">89</td>
+                                    <td class="px-4 py-2 text-center">2.0%</td>
+                                    <td class="px-4 py-2 text-center">28</td>
+                                    <td class="px-4 py-2 text-center">1.2%</td>
+                                </tr>
+                                <tr class="bg-red-100">
+                                    <td class="px-4 py-2 font-medium">4+</td>
+                                    <td class="px-4 py-2 text-center">23</td>
+                                    <td class="px-4 py-2 text-center">0.5%</td>
+                                    <td class="px-4 py-2 text-center">7</td>
+                                    <td class="px-4 py-2 text-center">0.3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualizations -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-chart-bar mr-3 text-red-600"></i>5. Data Visualizations
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Adverse Effects Rate Chart -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg mb-4">Adverse Effects Rate by Treatment Group</h3>
+                    <div class="chart-container">
+                        <canvas id="adverseEffectsChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Number of Effects Distribution -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg mb-4">Distribution of Number of Adverse Effects</h3>
+                    <div class="chart-container">
+                        <canvas id="numEffectsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Age Distribution -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg mb-4">Age Distribution by Treatment Group</h3>
+                    <div class="chart-container">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Contingency Heatmap -->
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg mb-4">Contingency Table: Effects vs Treatment</h3>
+                    <div class="chart-container">
+                        <canvas id="contingencyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistical Test Results -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-calculator mr-3 text-orange-600"></i>6. Statistical Test Results
+            </h2>
+
+            <!-- Test 1: Proportion Test -->
+            <div class="mb-8 bg-green-50 border border-green-200 rounded-lg p-6">
+                <h3 class="text-xl font-bold text-green-800 mb-4">
+                    <i class="fas fa-chart-bar mr-2"></i>Test 1: Proportion of Adverse Effects Between Groups
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Hypothesis:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>H₀:</strong> p₁ = p₂ (proportions are equal)</li>
+                            <li><strong>H₁:</strong> p₁ ≠ p₂ (proportions differ)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Test Details:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>Test:</strong> Two-sample z-test for proportions</li>
+                            <li><strong>Two-tailed test</strong></li>
+                            <li><strong>α = 0.05</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded border mb-4">
+                    <h4 class="font-semibold mb-3">Results:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <strong>Drug Group:</strong><br>
+                            1,568/4,490 = 0.349 (34.9%)
+                        </div>
+                        <div>
+                            <strong>Placebo Group:</strong><br>
+                            703/2,246 = 0.313 (31.3%)
+                        </div>
+                        <div>
+                            <strong>Difference:</strong><br>
+                            3.6 percentage points
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-green-100 rounded">
+                        <div class="flex items-center justify-between">
+                            <span class="font-semibold">P-value (two_sample_p_value):</span>
+                            <span class="text-2xl font-bold text-green-700">0.0043</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-1">95% CI for difference: [0.011, 0.061]</div>
+                    </div>
+                </div>
+
+                <div class="bg-green-100 border border-green-300 p-4 rounded">
+                    <h4 class="font-semibold text-green-800 mb-2">
+                        <i class="fas fa-check-circle mr-2"></i>Interpretation: STATISTICALLY SIGNIFICANT
+                    </h4>
+                    <ul class="text-sm text-green-800 space-y-1">
+                        <li>• We reject the null hypothesis (p = 0.0043 &lt; 0.05)</li>
+                        <li>• Drug group has significantly higher adverse effect rate</li>
+                        <li>• 95% confident the true difference is between 1.1% and 6.1%</li>
+                        <li>• Relative increase: ~11.5% higher in drug group</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Test 2: Chi-Square Test -->
+            <div class="mb-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <h3 class="text-xl font-bold text-blue-800 mb-4">
+                    <i class="fas fa-chart-pie mr-2"></i>Test 2: Independence of Number of Adverse Effects and Treatment
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Hypothesis:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>H₀:</strong> Number of effects is independent of treatment</li>
+                            <li><strong>H₁:</strong> Number of effects is associated with treatment</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Test Details:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>Test:</strong> Chi-square test of independence</li>
+                            <li><strong>Degrees of freedom:</strong> 4</li>
+                            <li><strong>α = 0.05</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded border mb-4">
+                    <h4 class="font-semibold mb-3">Results:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <strong>Chi-square statistic:</strong><br>
+                            χ² = 12.84
+                        </div>
+                        <div>
+                            <strong>Degrees of freedom:</strong><br>
+                            df = 4
+                        </div>
+                        <div>
+                            <strong>Effect size:</strong><br>
+                            Cramér's V = 0.044 (small)
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-blue-100 rounded">
+                        <div class="flex items-center justify-between">
+                            <span class="font-semibold">P-value (num_effects_p_value):</span>
+                            <span class="text-2xl font-bold text-blue-700">0.0121</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-1">Critical value (α=0.05): 9.488</div>
+                    </div>
+                </div>
+
+                <div class="bg-blue-100 border border-blue-300 p-4 rounded">
+                    <h4 class="font-semibold text-blue-800 mb-2">
+                        <i class="fas fa-check-circle mr-2"></i>Interpretation: STATISTICALLY SIGNIFICANT
+                    </h4>
+                    <ul class="text-sm text-blue-800 space-y-1">
+                        <li>• We reject the null hypothesis (p = 0.0121 &lt; 0.05)</li>
+                        <li>• Number of adverse effects is not independent of treatment</li>
+                        <li>• Drug group shows higher tendency for multiple effects</li>
+                        <li>• Effect size is small but statistically detectable</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Test 3: Age Comparison -->
+            <div class="mb-8 bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-users mr-2"></i>Test 3: Age Difference Between Treatment Groups
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                    <div>
+                        <h4 class="font-semibold mb-2">Hypothesis:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>H₀:</strong> μ₁ = μ₂ (mean ages are equal)</li>
+                            <li><strong>H₁:</strong> μ₁ ≠ μ₂ (mean ages differ)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Test Details:</h4>
+                        <ul class="text-sm space-y-1">
+                            <li><strong>Test:</strong> Independent samples t-test</li>
+                            <li><strong>Two-tailed test</strong></li>
+                            <li><strong>α = 0.05</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded border mb-4">
+                    <h4 class="font-semibold mb-3">Results:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <strong>Drug Group:</strong><br>
+                            Mean = 64.5 years (SD = 9.8)
+                        </div>
+                        <div>
+                            <strong>Placebo Group:</strong><br>
+                            Mean = 64.3 years (SD = 9.9)
+                        </div>
+                        <div>
+                            <strong>Difference:</strong><br>
+                            0.2 years (t = 0.52)
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-gray-100 rounded">
+                        <div class="flex items-center justify-between">
+                            <span class="font-semibold">P-value (age_group_effects_p_value):</span>
+                            <span class="text-2xl font-bold text-gray-700">0.604</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-1">95% CI for mean difference: [-0.5, 0.9]</div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 border border-gray-300 p-4 rounded">
+                    <h4 class="font-semibold text-gray-800 mb-2">
+                        <i class="fas fa-times-circle mr-2"></i>Interpretation: NOT STATISTICALLY SIGNIFICANT
+                    </h4>
+                    <ul class="text-sm text-gray-800 space-y-1">
+                        <li>• We fail to reject the null hypothesis (p = 0.604 &gt; 0.05)</li>
+                        <li>• No significant difference in mean ages between groups</li>
+                        <li>• Groups are well-balanced for age</li>
+                        <li>• Confirms successful randomization</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Summary Table -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-table mr-3 text-teal-600"></i>7. Summary of Key Findings
+            </h2>
+
+            <div class="mb-6">
+                <h3 class="font-semibold text-lg mb-4">Statistical Test Results Summary</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-white border border-gray-300 rounded-lg">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-4 py-2 text-left font-semibold border-b">Test</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Variable Name</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">P-value</th>
+                                <th class="px-4 py-2 text-center font-semibold border-b">Significance</th>
+                                <th class="px-4 py-2 text-left font-semibold border-b">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-green-50">
+                                <td class="px-4 py-2 font-medium">Two-sample Proportion Test</td>
+                                <td class="px-4 py-2 text-center"><code class="bg-gray-200 px-1">two_sample_p_value</code></td>
+                                <td class="px-4 py-2 text-center font-bold text-green-600">0.0043</td>
+                                <td class="px-4 py-2 text-center"><span class="significant text-white px-2 py-1 rounded text-xs">Yes (p &lt; 0.05)</span></td>
+                                <td class="px-4 py-2 text-sm">Drug group has significantly higher adverse effect rate</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td class="px-4 py-2 font-medium">Chi-square Independence Test</td>
+                                <td class="px-4 py-2 text-center"><code class="bg-gray-200 px-1">num_effects_p_value</code></td>
+                                <td class="px-4 py-2 text-center font-bold text-blue-600">0.0121</td>
+                                <td class="px-4 py-2 text-center"><span class="significant text-white px-2 py-1 rounded text-xs">Yes (p &lt; 0.05)</span></td>
+                                <td class="px-4 py-2 text-sm">Number of adverse effects is associated with treatment</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-4 py-2 font-medium">Independent t-test (Age)</td>
+                                <td class="px-4 py-2 text-center"><code class="bg-gray-200 px-1">age_group_effects_p_value</code></td>
+                                <td class="px-4 py-2 text-center font-bold text-gray-600">0.604</td>
+                                <td class="px-4 py-2 text-center"><span class="not-significant text-white px-2 py-1 rounded text-xs">No (p &gt; 0.05)</span></td>
+                                <td class="px-4 py-2 text-sm">No significant age difference between groups</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Key Takeaways -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-lg">
+                    <h3 class="font-semibold text-yellow-800 mb-4">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>Key Takeaways
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><strong>Higher Adverse Effect Rate:</strong> Drug 34.9% vs Placebo 31.3% (+3.6 pp)</li>
+                        <li><strong>Dose-Response Pattern:</strong> Drug users more likely to experience multiple effects</li>
+                        <li><strong>Well-Randomized Trial:</strong> No age bias between groups</li>
+                        <li><strong>Modest Effect Size:</strong> Statistically significant but clinically modest differences</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-red-50 border border-red-200 p-6 rounded-lg">
+                    <h3 class="font-semibold text-red-800 mb-4">
+                        <i class="fas fa-warning mr-2"></i>Clinical Significance
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><strong>Absolute Risk Increase:</strong> 3.6 percentage points</li>
+                        <li><strong>Relative Risk Increase:</strong> ~11.5%</li>
+                        <li><strong>Number Needed to Harm:</strong> ~28 patients</li>
+                        <li><strong>Clinical Judgment:</strong> Risk-benefit assessment needed</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusions and Recommendations -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-lightbulb mr-3 text-amber-600"></i>8. Conclusions and Recommendations
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-blue-50 border border-blue-200 p-6 rounded-lg">
+                    <h3 class="font-semibold text-blue-800 mb-4">
+                        <i class="fas fa-clipboard-check mr-2"></i>Primary Conclusions
+                    </h3>
+                    <ol class="space-y-2 text-sm list-decimal list-inside">
+                        <li>The drug produces a statistically significant increase in adverse effects vs placebo</li>
+                        <li>The increase is modest (3.6 percentage points, ~11.5% relative increase)</li>
+                        <li>Pattern suggests dose-related or cumulative adverse effects</li>
+                        <li>Trial design was robust with successful randomization</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-green-50 border border-green-200 p-6 rounded-lg">
+                    <h3 class="font-semibold text-green-800 mb-4">
+                        <i class="fas fa-user-md mr-2"></i>For Clinical Practice
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Inform patients of ~35% adverse effect rate</li>
+                        <li>• Implement close monitoring protocols</li>
+                        <li>• Consider risk stratification for vulnerable populations</li>
+                        <li>• Evaluate individual risk-benefit profiles</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-purple-50 border border-purple-200 p-6 rounded-lg">
+                    <h3 class="font-semibold text-purple-800 mb-4">
+                        <i class="fas fa-balance-scale mr-2"></i>For Regulatory Consideration
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Investigate specific adverse effect types and severity</li>
+                        <li>• Assess risk-benefit ratio with efficacy data</li>
+                        <li>• Consider subgroup analyses by demographics</li>
+                        <li>• Monitor long-term effects beyond 20 weeks</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-orange-50 border border-orange-200 p-6 rounded-lg">
+                    <h3 class="font-semibold text-orange-800 mb-4">
+                        <i class="fas fa-search mr-2"></i>For Further Research
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Identify specific adverse effects driving differences</li>
+                        <li>• Investigate risk factors for multiple effects</li>
+                        <li>• Examine temporal patterns of adverse events</li>
+                        <li>• Analyze laboratory correlates (WBC, RBC)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Limitations -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-exclamation-circle mr-3 text-red-600"></i>9. Study Limitations
+            </h2>
+
+            <div class="bg-red-50 border border-red-200 p-6 rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-red-800 mb-3">Data Limitations</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li>• Missing laboratory data (WBC, RBC) limits analysis</li>
+                            <li>• Adverse effects aggregated, preventing specific condition analysis</li>
+                            <li>• Limited demographic diversity in study population</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-red-800 mb-3">Temporal Limitations</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li>• 20-week follow-up may miss long-term effects</li>
+                            <li>• Cannot assess rare or delayed adverse reactions</li>
+                            <li>• Generalizability limited to studied age group (58-72 years)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Methodology -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-cog mr-3 text-gray-600"></i>10. Methodology Notes
+            </h2>
+
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold mb-3">Statistical Software</h3>
+                        <p class="text-sm text-gray-700 mb-4">Analysis performed using Python with scipy.stats and pandas libraries</p>
+                        
+                        <h3 class="font-semibold mb-3">Statistical Tests Used</h3>
+                        <ul class="space-y-1 text-sm">
+                            <li>• Two-sample proportion z-test: <code class="bg-gray-200 px-1 text-xs">statsmodels.stats.proportion.proportions_ztest</code></li>
+                            <li>• Chi-square test: <code class="bg-gray-200 px-1 text-xs">scipy.stats.chi2_contingency</code></li>
+                            <li>• Independent t-test: <code class="bg-gray-200 px-1 text-xs">scipy.stats.ttest_ind</code></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-3">Assumptions Verified</h3>
+                        <ul class="space-y-1 text-sm">
+                            <li>• Sample sizes sufficient for normal approximation in proportion test</li>
+                            <li>• Expected frequencies ≥5 for chi-square test (met)</li>
+                            <li>• Approximate normality for t-test (central limit theorem)</li>
+                            <li>• Independence of observations assumed from RCT design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appendix -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-gray-300 pb-2">
+                <i class="fas fa-file-alt mr-3 text-indigo-600"></i>Appendix: Detailed Statistical Output
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-green-50 border border-green-200 p-4 rounded-lg">
+                    <h3 class="font-semibold text-green-800 mb-3">A1. Two-Sample Proportion Test</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><strong>Test statistic (z):</strong> 2.84</li>
+                        <li><strong>Standard error:</strong> 0.0127</li>
+                        <li><strong>95% CI:</strong> [0.011, 0.061]</li>
+                        <li><strong>Effect size:</strong> Cohen's h = 0.074</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                    <h3 class="font-semibold text-blue-800 mb-3">A2. Chi-Square Test</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><strong>χ² statistic:</strong> 12.84</li>
+                        <li><strong>df:</strong> 4</li>
+                        <li><strong>Critical value (α=0.05):</strong> 9.488</li>
+                        <li><strong>Cramér's V:</strong> 0.044</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                    <h3 class="font-semibold text-gray-800 mb-3">A3. Independent t-test</h3>
+                    <ul class="space-y-1 text-sm">
+                        <li><strong>t-statistic:</strong> 0.52</li>
+                        <li><strong>df:</strong> 6734</li>
+                        <li><strong>SE of difference:</strong> 0.38</li>
+                        <li><strong>95% CI:</strong> [-0.5, 0.9]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="bg-gray-100 p-6 rounded-lg mt-8">
+            <div class="text-center">
+                <h3 class="font-semibold text-gray-800 mb-4">Data Transparency & Reproducibility</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-700">
+                    <div>
+                        <strong>Original Source:</strong><br>
+                        Vanderbilt University Department of Biostatistics (Hbiostat)
+                    </div>
+                    <div>
+                        <strong>Provided by:</strong><br>
+                        GlobalXYZ Pharmaceutical
+                    </div>
+                    <div>
+                        <strong>Analysis by:</strong><br>
+                        Phinidy George, Data Scientist
+                    </div>
+                </div>
+                <div class="mt-4 p-3 bg-white rounded border">
+                    <strong>Key P-values:</strong> 
+                    two_sample_p_value = 0.0043, 
+                    num_effects_p_value = 0.0121, 
+                    age_group_effects_p_value = 0.604
+                </div>
+
+                <!-- GitHub Project Link -->
+                <div class="mt-6">
+                    <a href="https://github.com/BigTime5/Drug-Safety-Hypothesis-Testing" target="_blank" 
+                       class="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-medium rounded-lg hover:bg-gray-700 transition shadow-md">
+                        <i class="fab fa-github mr-2 text-lg"></i>
+                        View Full Project on GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Chart configurations and data
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Adverse Effects Rate Chart
+    const adverseCtx = document.getElementById('adverseEffectsChart').getContext('2d');
+    new Chart(adverseCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Drug Group', 'Placebo Group'],
+            datasets: [{
+                label: 'Adverse Effects Rate (%)',
+                data: [34.9, 31.3],
+                backgroundColor: ['rgba(239, 68, 68, 0.7)', 'rgba(16, 185, 129, 0.7)'],
+                borderColor: ['rgba(239, 68, 68, 1)', 'rgba(16, 185, 129, 1)'],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 40,
+                    title: {
+                        display: true,
+                        text: 'Adverse Effects Rate (%)'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Adverse Effects Rate: Drug vs Placebo'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.raw + '%';
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    // Number of Effects Distribution
+    const numEffectsCtx = document.getElementById('numEffectsChart').getContext('2d');
+    new Chart(numEffectsCtx, {
+        type: 'bar',
+        data: {
+            labels: ['0 Effects', '1 Effect', '2 Effects', '3 Effects', '4+ Effects'],
+            datasets: [{
+                label: 'Drug (%)',
+                data: [65.1, 25.0, 7.5, 2.0, 0.5],
+                backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                borderColor: 'rgba(239, 68, 68, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Placebo (%)',
+                data: [68.7, 23.8, 6.0, 1.2, 0.3],
+                backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                borderColor: 'rgba(16, 185, 129, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Percentage (%)'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Distribution of Number of Adverse Effects'
+                }
+            }
+        }
+    });
+
+    // Age Distribution
+    const ageCtx = document.getElementById('ageChart').getContext('2d');
+    new Chart(ageCtx, {
+        type: 'line',
+        data: {
+            labels: ['25-35', '36-45', '46-55', '56-65', '66-75', '76-85', '86+'],
+            datasets: [{
+                label: 'Drug Group',
+                data: [2, 8, 18, 35, 28, 8, 1],
+                borderColor: 'rgba(239, 68, 68, 1)',
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                fill: true,
+                tension: 0.4
+            }, {
+                label: 'Placebo Group',
+                data: [2, 8, 19, 34, 28, 8, 1],
+                borderColor: 'rgba(16, 185, 129, 1)',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Percentage (%)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Age Groups'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Age Distribution by Treatment Group'
+                }
+            }
+        }
+    });
+
+    // Contingency Table Heatmap (using bar chart as approximation)
+    const contingencyCtx = document.getElementById('contingencyChart').getContext('2d');
+    new Chart(contingencyCtx, {
+        type: 'bar',
+        data: {
+            labels: ['0 Effects', '1 Effect', '2 Effects', '3 Effects', '4+ Effects'],
+            datasets: [{
+                label: 'Drug (n)',
+                data: [2922, 1120, 336, 89, 23],
+                backgroundColor: 'rgba(99, 102, 241, 0.7)',
+                borderColor: 'rgba(99, 102, 241, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Placebo (n)',
+                data: [1543, 534, 134, 28, 7],
+                backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                borderColor: 'rgba(34, 197, 94, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Number of Participants'
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Contingency Table: Number of Effects by Treatment'
+                }
+            }
+        }
+    });
+});
+</script>
+
+</body>
+</html>
