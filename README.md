@@ -221,7 +221,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🔗 Links
 
 - **GitHub Repository:** [Drug-Safety-Hypothesis-Testing](https://github.com/BigTime5/Drug-Safety-Hypothesis-Testing)
-- **Project Website:** [index.html](index.html)
+- **Project Website:** [index.html](https://bigtime5.github.io/Drug-Safety-Hypothesis-Testing/)
 - **Dataset Source:** [Vanderbilt Biostatistics](http://hbiostat.org/data)
 
 ## 📧 Contact
